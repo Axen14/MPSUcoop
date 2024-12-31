@@ -1,0 +1,71 @@
+  .adminNavbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #033710;
+    /* color: white; */
+    border-radius: 0 15px 15px 0;
+    box-shadow: inset 0px 0px 20px 0px rgba(8, 29, 18, 0.71);
+    
+  }
+  
+  .logoSystemName {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: goldenrod;
+    text-align: center;
+    padding: 10px;
+
+  }
+  
+  .logoImage {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+  
+  .navList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .navItem:hover {
+    background-color: #34495e;
+  }
+  
+  .navIcon {
+    margin-right: 10px;
+  }
+  
+  .navLabel {
+    font-size: 18px;
+  }
+  
+  .logOut {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .logOut:hover {
+    color: #e74c3c;
+  }
+  
+  .logOutIcon {
+    margin-right: 10px;
+  }
+  
+  .logOutText {
+    font-size: 18px;
+  }
+    

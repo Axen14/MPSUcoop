@@ -1,0 +1,44 @@
+
+.loan-summary-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 120px;
+  justify-content: center;
+  padding: 5x;
+}
+
+.loan-card {
+  background-color: #686868;
+  border-radius: 10px;
+  border: 2px solid #000000;
+  padding: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.loan-type {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.loan-amount {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #000000;
+}
+
+
+.loan-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #000000;
+}
+
+.loan-label {
+  font-weight: bold;
+  color: #000000;
+}

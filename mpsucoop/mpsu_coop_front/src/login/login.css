@@ -1,0 +1,121 @@
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f0f0f0; 
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('img/mpspc.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.login-box {
+  background-color: #fce4ec;
+  padding: 50px;
+  border-radius: 20px;
+  width: 350px; 
+  text-align: center;
+  box-shadow: 0px 4px 20px rgba(237, 198, 122, 0.992); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container h1 {
+  font-size: 19px;
+  margin-bottom: 40px; 
+  color: black;
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 100%;
+}
+
+.input-group .form-control {
+  border-radius: 12px;
+  /* border: 2px solid black; */
+  padding: 10px; 
+  width: 80%; 
+}
+
+.input-group-text {
+  background: white;
+  color: black;
+  border-radius: 12px;
+  /* border: 2px solid black; */
+}
+
+.btn {
+  border-radius: 12px;
+  font-size: 16px;
+  margin: 20px 0;
+  width: 80%; 
+  padding: 10px; 
+  cursor: pointer;
+  transition: all 0.3s ease; 
+  text-align: center; 
+}
+
+.btn-primary {
+  background: #0d5d24;
+  /* border: 2px solid black; */
+  color: white;
+}
+
+.btn-primary:hover {
+  background: goldenrod;
+  color: white;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+a {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:hover {
+  color: #0d5d24;
+}
+
+.card-body {
+  background-color: #fce4ec;
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  box-shadow: none;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  padding-left: 0;
+
+}
+
+#crt{
+  color: rgb(57, 197, 244);
+}

@@ -1,0 +1,102 @@
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.formContainer {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 350px; 
+  margin: 0 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+input {
+  font-size: 1rem;
+  padding: 10px;
+  margin: 8px 0;
+  width: 100%;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  margin-top: 40px;
+  border-collapse: collapse;
+  color:white;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #010101;
+}
+
+table th {
+  background-color: #bababa;
+  font-weight: bold;
+  color: #000000;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-grow: 1; 
+  margin: 5px;
+}
+
+button[type="button"] {
+  background-color: #ff1515;
+}
+
+button:hover {
+  background-color: #00ff0d;
+}
+
+button[type="button"]:hover {
+  background-color: #ff0000;
+}
+
+button:last-of-type {
+  background-color: #ff4c4c;
+  margin-top: 5px;
+}
+
+button:last-of-type:hover {
+  background-color: #ff0000;
+}
+
+@media (max-width: 600px) {
+  .buttonContainer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+

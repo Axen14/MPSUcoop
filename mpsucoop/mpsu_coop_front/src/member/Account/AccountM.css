@@ -1,0 +1,94 @@
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+table thead tr {
+  background-color: #2c3e50;
+  color: #ffffff;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+.loading {
+  color: #3498db;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+@media (max-width: 600px) {
+  table thead {
+    display: none;
+  }
+
+  table, table tbody, table tr, table td {
+    display: block;
+    width: 100%;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,106 @@
+
+.systemSettings {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+
+.error {
+    color: #ff0000;
+    background-color: #ffe6e6;
+    border: 1px solid #ffcccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+.settingsList {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+
+.settingsList > div {
+    display: flex;
+    align-items: center;
+}
+
+.settingsList label {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #555;
+    width: 250px;
+}
+
+
+input {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 200px;
+}
+
+span {
+    font-size: 1rem;
+    /* color: #333; */
+    font-weight: bold;
+}
+
+
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.settingsList input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    
+    .settingsList {
+        grid-template-columns: 1fr;
+    }
+
+    .settingsList label {
+        width: 100%;
+    }
+}

@@ -1,0 +1,61 @@
+
+.content-wrapper {
+  margin-top: 0px;
+  padding: 20px;
+  background-color: black;
+}
+
+.ledger-table {
+  background-color: gray;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid black;
+  height: 400px;
+}
+
+.ledger-table h2 {
+  font-size: 22px;
+  color: black;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ledger-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.ledger-table th, .ledger-table td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  color: black;
+}
+
+.ledger-table th {
+  background-color: gray;
+  font-weight: bold;
+}
+
+.print-btn {
+  background-color: #4CAF50;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.print-btn:hover {
+  background-color: #33FF00;
+}
+
+@media print {
+  .print-btn {
+    display: none;
+  }
+}

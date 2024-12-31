@@ -1,0 +1,59 @@
+.adminDashboardContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap; 
+  background-color: goldenrod;
+  height: 100vh; 
+  width:100vw;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
+  overflow: hidden; 
+}
+
+.adminDashboardMain {
+  /* flex-basis: 70%; */
+  flex-grow: 1;
+  background-color: #469c5b;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 15px ;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  box-shadow: 25px 25px 25px 25px rgba(0, 0, 0, 0.2);
+  /* transition: transform 0.2s ease-in-out; */
+  overflow-y: auto; 
+  /* height: 100vh;  */
+  width: 100%;
+}
+
+.adminDashboardMain:hover {
+  transform: translateY(-5px); 
+}
+
+
+@media (max-width: 991px) {
+  .adminDashboardMain {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .adminDashboardContainer {
+    flex-direction: column;
+    align-items: center;
+    height: auto; 
+  }
+
+  .adminDashboardMain {
+    padding: 20px;
+    gap: 30px;
+    height: auto; 
+    width: 100%; 
+  }
+}

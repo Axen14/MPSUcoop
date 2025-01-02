@@ -1,100 +1,84 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Topbar from './Topbar/Topbar';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom'; // For scheduleId
 
-const Payments = () => {
-  const { control_number } = useParams(); 
+const MemberPayments = () => {
+  const { scheduleId } = useParams(); // Get scheduleId from the URL
   const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPayments = async () => {
-      try {
-        const accessToken = localStorage.getItem("accessToken");
-
-        if (!accessToken) {
-          throw new Error("Access token is missing. Please log in.");
+      // Ensure scheduleId is valid before making the API request
+      if (scheduleId) {
+        try {
+          const response = await axios.get(
+            `http://127.0.0.1:8000/api/member-payments/?schedule=${scheduleId}`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+              },
+            }
+          );
+          setPayments(response.data);
+        } catch (err) {
+          setError('Failed to fetch payments. Please try again later.');
+        } finally {
+          setLoading(false);
         }
-
-        const response = await fetch(
-          `http://localhost:8000/api/payments/${control_number}/`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          if (response.status === 401) {
-            throw new Error("Session expired. Please log in again.");
-          } else if (response.status === 404) {
-            throw new Error("Payments not found for this loan.");
-          } else {
-            throw new Error("Failed to fetch payments.");
-          }
-        }
-
-        const data = await response.json();
-        setPayments(data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching payments:", err);
-        setError(err.message || "Unable to load payments.");
+      } else {
+        setError('Invalid schedule ID.');
         setLoading(false);
       }
     };
 
     fetchPayments();
-  }, [control_number]);
+  }, [scheduleId]); // Run useEffect when scheduleId changes
 
-  if (loading) {
-    return <div>Loading payments...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  if (loading) return <p>Loading payments...</p>;
+  if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
   return (
     <div>
-    <Topbar/>
-      <h2>Payments for Loan {control_number}</h2>
+      <h2>My Payments</h2>
       {payments.length > 0 ? (
         <table>
           <thead>
             <tr>
+              <th>Loan Control Number</th>
+              <th>Due Date</th>
               <th>Principal Amount</th>
-              <th>Interest</th>
+              <th>Interest Amount</th>
               <th>Service Fee</th>
               <th>Paid Amount</th>
               <th>Date Paid</th>
-              <th>Balance</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {payments.map((payment) => (
-              <tr key={payment.id}>
-                <td>{payment.principal_amount}</td>
-                <td>{payment.interest}</td>
-                <td>{payment.service_fee}</td>
-                <td>{payment.paid_amount}</td>
-                <td>{payment.date_paid || "N/A"}</td>
-                <td>{payment.balance}</td>
+              <tr key={payment.OR}>
+                <td>{payment.payment_schedule.loan.control_number}</td>
+                <td>{payment.payment_schedule.due_date}</td>
+                <td>₱ {parseFloat(payment.payment_schedule.principal_amount).toFixed(2)}</td>
+                <td>{payment.payment_schedule.service_fee_component}</td>
+                <td>₱ {parseFloat(payment.payment_amount).toFixed(2)}</td>
+                <td>
+                  {payment.date_paid
+                    ? new Date(payment.date_paid).toLocaleDateString()
+                    : 'Not Paid'}
+                </td>
                 <td>{payment.status}</td>
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        <div>No payments found for this loan.</div>
+        <p>No payments found.</p>
       )}
     </div>
   );
 };
 
-export default Payments;
+export default MemberPayments;

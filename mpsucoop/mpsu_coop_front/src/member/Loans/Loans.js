@@ -117,7 +117,7 @@ const Loans = () => {
                   <Link to={`/payment-schedules/${loan.control_number}`}>
                     View Payment Schedule
                   </Link>
-                  <Link to={`/payments/${loan.control_number}`}>
+                  <Link to={`/payments/${loan.scheduleId}`}>
                     View Payment
                   </Link>
                 </td>

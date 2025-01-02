@@ -23,7 +23,7 @@ function App() {
         <Route path="/home" element={<Home />} />
           <Route path="/loans" element={<Loans />} />
           <Route path="/payment-schedules/:control_number" element={<PaymentSchedule />} /> 
-          <Route path="api/payments/:control_number" element={<Payments />} />
+          <Route path="/payments/:scheduleId" element={<Payments />} />
           <Route path="/accounts" element={<Accounts />} /> 
           <Route path="/ledger" element={<Ledger />} /> 
         

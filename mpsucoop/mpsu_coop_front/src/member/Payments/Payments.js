@@ -1,93 +1,66 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
 
-function Payments() {
-  const [payments, setPayments] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);  
-  const accountNumber = localStorage.getItem('accountN');  
+// const MemberPayments = () => {
+//   const [payments, setPayments] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchPayments = async () => {
-      try {
-        const accountNumber = localStorage.getItem('accountN');
-        const token = localStorage.getItem('accessToken');
+//   useEffect(() => {
+//     const fetchPayments = async () => {
+//       try {
+//         const response = await axios.get('http://127.0.0.1:8000/api/member-payments/', {
+//           headers: {
+//             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+//           },
+//         });
+//         setPayments(response.data);
+//       } catch (err) {
+//         setError('Failed to fetch payments. Please try again later.');
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-        if (!accountNumber || !token) {
-          throw new Error("Missing account number or access token");
-        }
+//     fetchPayments();
+//   }, []);
 
-        const response = await fetch(`http://127.0.0.1:8000/api/payments/by-account/?account_number=${accountNumber}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
+//   if (loading) return <p>Loading payments...</p>;
+//   if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
-        if (!response.ok) {
-          const errorMessage = `Error fetching payments: ${response.status} ${response.statusText}`;
-          setError(errorMessage);
-          throw new Error(errorMessage);
-        }
+//   return (
+//     <div>
+//       <h2>My Payments</h2>
+//       {payments.length > 0 ? (
+//         <table>
+//           <thead>
+//             <tr>
+//               <th>Loan Control Number</th>
+//               <th>Due Date</th>
+//               <th>Installment Amount</th>
+//               <th>Payment Amount</th>
+//               <th>Date Paid</th>
+//               <th>Status</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {payments.map((payment) => (
+//               <tr key={payment.id}>
+//                 <td>{payment.loan.control_number}</td>
+//                 <td>{payment.payment_schedule.due_date}</td>
+//                 <td>₱ {parseFloat(payment.payment_schedule.installment_amount).toFixed(2)}</td>
+//                 <td>₱ {parseFloat(payment.payment_amount).toFixed(2)}</td>
+//                 <td>{payment.date_paid ? new Date(payment.date_paid).toLocaleDateString() : 'Not Paid'}</td>
+//                 <td>{payment.status}</td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       ) : (
+//         <p>No payments found.</p>
+//       )}
+//     </div>
+//   );
+// };
 
-        const data = await response.json();
-        if (data.error) {
-          setError(data.error);
-        } else {
-          setPayments(data);  
-        }
-      } catch (error) {
-        console.error("Error in fetchPayments:", error);
-        setError(error.message);  
-      } finally {
-        setLoading(false);  
-      }
-    };
-
-    fetchPayments();
-  }, [accountNumber]);
-
-  return (
-    <div>
-      {loading ? (
-        <p>Loading payments...</p>  
-      ) : error ? (
-        <p>{error}</p>  
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Principal Amount</th>
-              <th>Interest</th>
-              <th>Service Fee</th>
-              <th>Paid Amount</th>
-              <th>Date Paid</th>
-              <th>Balance</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payments.length > 0 ? (
-              payments.map((payment) => (
-                <tr key={payment.id}>
-                  <td>₱ {(parseFloat(payment.principal_amount) || 0).toFixed(2)}</td>
-                  <td>₱ {(parseFloat(payment.interest_amount) || 0).toFixed(2)}</td>
-                  <td>₱ {(parseFloat(payment.service_fee_component) || 0).toFixed(2)}</td>
-                  <td>₱ {(parseFloat(payment.payment_amount) || 0).toFixed(2)}</td>
-                  <td>{new Date(payment.due_date).toLocaleDateString()}</td>
-                  <td>₱ {(parseFloat(payment.balance) || 0).toFixed(2)}</td>
-                  <td style={{ color: payment.status === 'Paid' ? 'green' : 'red' }}>
-                    {payment.status}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr><td colSpan="7">No payments found for this account.</td></tr>
-            )}
-          </tbody>
-        </table>
-      )}
-    </div>
-  );
-}
-
-export default Payments;
+// export default MemberPayments;

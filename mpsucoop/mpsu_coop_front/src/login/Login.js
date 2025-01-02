@@ -49,8 +49,8 @@ function Login() {
       }
 
       const data = await response.json();
-      localStorage.setItem('accessToken', data.access);
-      localStorage.setItem('account_number', data.accountN);
+      localStorage.setItem('accessToken', data.access);  // Save access token
+      localStorage.setItem('account_number', data.account_number);  // Corrected key name
       localStorage.setItem('userRole', 'member');  
       console.log('Member login successful');
       navigate('/home');
@@ -59,7 +59,7 @@ function Login() {
     } finally {
       setLoading(false);
     }
-  };
+};
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
